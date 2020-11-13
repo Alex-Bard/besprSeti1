@@ -32,9 +32,7 @@ public class Main {
 
         r = Integer.toBinaryString(gx).length() - Integer.toBinaryString(gx).indexOf("1") - 1;
         MyResult result = coderDecoder(gx, k, e, m, r);
-        createE Emas =  new createE(k+r);
-        ArrayList E =  Emas.getEmas();
-
+        verdict(result,true);
 
 
     }
