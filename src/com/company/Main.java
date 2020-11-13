@@ -24,16 +24,22 @@ public class Main {
         gx = Integer.parseInt(in.nextLine(),2);
         System.out.print("Введите k:");
         k = Integer.parseInt(in.nextLine(),10);
-        System.out.print("Введите вектор e:");
-        e = Integer.parseInt(in.nextLine(),2);
+       //System.out.print("Введите вектор e:");
+        //e = Integer.parseInt(in.nextLine(),2);
         System.out.print("Введите вектор m:");
         m = Integer.parseInt(in.nextLine(),2);
-        System.out.println("Вычисление С(x):");
+        //System.out.println("Вычисление С(x):");
 
         r = Integer.toBinaryString(gx).length() - Integer.toBinaryString(gx).indexOf("1") - 1;
-        MyResult result = coderDecoder(gx, k, e, m, r);
         createE Emas =  new createE(k+r);
-        ArrayList E =  Emas.getEmas();
+        ArrayList<Integer> E =  Emas.getEmas();
+        for (Integer i : E){
+            MyResult result = coderDecoder(gx, k, i, m, r);
+            if (verdict(result,false)){
+                System.out.println(toVectorLen(i,k+r));
+            }
+        }
+
 
 
 
@@ -43,17 +49,17 @@ public class Main {
 
         int cx,a,b,s;
         cx = mod((m << r), gx);
-        cx = verifyStep("cx", cx, r, true);
-        System.out.println("Вычисление вектора а:");
+        //cx = verifyStep("cx", cx, r, true);
+        //System.out.println("Вычисление вектора а:");
         a = (m << r) + cx;
-        a = verifyStep("a", a, k+r, true);
-        System.out.println("Вычисление вектора b:");
+        //a = verifyStep("a", a, k+r, true);
+       // System.out.println("Вычисление вектора b:");
         b = a ^ e;
-        b = verifyStep("b", b,k+r,false);
+        //b = verifyStep("b", b,k+r,false);
 
-        System.out.println("Вычисление синдрома s:");
+        //System.out.println("Вычисление синдрома s:");
         s = mod(b, gx);
-        s = verifyStep("s", s,0,true);
+        //s = verifyStep("s", s,0,true);
         MyResult result = new MyResult(e, s);
 
         return result;
