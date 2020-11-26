@@ -5,8 +5,21 @@ import java.util.Collections;
 
 public class createE {
     private HashSet<Integer> E;
-    public  createE(int len){
-        int start = 1;
+    public  createE(int len, int d) {
+        HashSet<Integer> Emas = new HashSet<Integer>();
+
+        for (int k = 0; k < Math.pow(2, len); k++) {
+            if (count(Integer.toBinaryString(k), "1") < d) {
+                Emas.add(k);
+            }
+        }
+        this.E = Emas;
+
+    }
+
+
+
+        /*int start = 1;
         HashSet<Integer> Emas = new HashSet<Integer>();
         for (int i = 0; i < len; i++){
             int e =  (int)Math.pow(2,i);
@@ -20,7 +33,7 @@ public class createE {
             start++;
         }
         this.E = Emas;
-    }
+    }*/
     public ArrayList getEmas(){
         ArrayList<Integer> sortedList = new ArrayList(this.E);
         Collections.sort(sortedList);
@@ -37,5 +50,8 @@ public class createE {
             }
         }
         return vector;
+    }
+    public int count(String str, String target) {
+        return (str.length() - str.replace(target, "").length()) / target.length();
     }
 }

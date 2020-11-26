@@ -18,12 +18,14 @@ public class Main {
     static Scanner in = new Scanner(System.in);
     public static void main(String[] args) {
 
-        int gx,k,e,m,r,cx,a,b,s;
+        int gx,k,e,m,r,cx,a,b,s,d;
 
         System.out.print("Введите вектор g(x):");
         gx = Integer.parseInt(in.nextLine(),2);
         System.out.print("Введите k:");
         k = Integer.parseInt(in.nextLine(),10);
+        System.out.print("Введите d:");
+        d = Integer.parseInt(in.nextLine(),10);
        //System.out.print("Введите вектор e:");
         //e = Integer.parseInt(in.nextLine(),2);
         System.out.print("Введите вектор m:");
@@ -31,7 +33,7 @@ public class Main {
         //System.out.println("Вычисление С(x):");
 
         r = Integer.toBinaryString(gx).length() - Integer.toBinaryString(gx).indexOf("1") - 1;
-        createE Emas =  new createE(k+r);
+        createE Emas =  new createE(k+r, d);
         ArrayList<Integer> E =  Emas.getEmas();
         for (Integer i : E){
             MyResult result = coderDecoder(gx, k, i, m, r);
