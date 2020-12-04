@@ -41,7 +41,7 @@ public class Main {
                 System.out.println(toVectorLen(i,k+r));
             }
         }
-
+        printCodeWords(createCodeWords(k+r,gx),k+r);
 
 
 
@@ -116,5 +116,21 @@ public class Main {
         tmp = b << (degA - degB);
         a = mod(a ^ tmp , b);
         return a;
+    }
+    public static ArrayList createCodeWords(int len, int gx){
+        ArrayList<Integer> ListCodeWords = new ArrayList();
+        for(int i = 0; i < Math.pow(2, len); i++){
+            if (mod(i,gx) == 0){
+                ListCodeWords.add(i);
+            }
+        }
+        CodeWorsd c = new CodeWorsd(ListCodeWords);
+        return c.getMassKey();
+    }
+    public static void printCodeWords(ArrayList<Integer> ListCodeWords, int len){
+        System.out.println("Все кодовые слова:");
+        for (Integer i : ListCodeWords) {
+            System.out.println(toVectorLen(i,len));
+        }
     }
 }
